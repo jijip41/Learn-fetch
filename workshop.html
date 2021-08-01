@@ -8,8 +8,11 @@
   <body>
     <h1>Open the console</h1>
     <script>
-      const a = fetch('https://pokeapi.co/api/v2/pokemon/pikachu');
-      console.log(a);
+      const a = fetch('https://pokeapi.co/api/v2/pokemon/pikachu').then(
+        (value) => {
+          console.log(value);
+        }
+      );
     </script>
   </body>
 </html>
