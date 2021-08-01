@@ -8,9 +8,26 @@
   <body>
     <h1>Open the console</h1>
     <script>
-      const a = fetch()
-        .then((response) => response.json())
-        .catch((error) => console.log(error));
+      // function getUser(username) {
+      //   fetch(`https://api.github.com/users/${username}`).then((response) =>
+      //     response.json()
+      //   );
+      // } ==> why doesn't it work???
+
+      const getUser = (username) =>
+        fetch(`https://api.github.com/users/${username}`).then((response) =>
+          response.json()
+        );
+
+      getUser('oliverjam').then(console.log).catch(console.error);
+
+      const getRepos = (obj) =>
+        fetch(obj.repos_url).then((response) => response.json());
+
+      getUser('oliverjam')
+        .then(getRepos)
+        .then(console.log)
+        .catch(console.error);
     </script>
   </body>
 </html>
